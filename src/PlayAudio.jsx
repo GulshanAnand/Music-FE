@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import './Player.css';
 
 const PlayAudio = ({trackName, trackUrl}) => { 
   const [audioSrc, setAudioSrc] = useState("");
@@ -36,8 +37,11 @@ const PlayAudio = ({trackName, trackUrl}) => {
 
   return (
     <div>  
-      {isLoaded ? (<div> {trackName}</div>):(<div>Loading</div>)}
-      <audio controls src={audioSrc} onLoadedData={() => setIsLoaded(true)} />
+      <div className="player-title">
+      {isLoaded ? (<> {trackName}</>):(<>Loading</>)}
+      </div>
+      
+      <audio  controls src={audioSrc} onLoadedData={() => setIsLoaded(true)} />
     </div>
   );
 };
