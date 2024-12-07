@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-const PlayAudio = ({trackName}) => {
-  // const trackName = "https://www.youtube.com/watch?v=3CvdX1VVNbY";
+const PlayAudio = ({trackName, trackUrl}) => { 
   const [audioSrc, setAudioSrc] = useState("");
+  const [isLoaded, setIsLoaded] = useState(false); 
 
   const fetchAudio = async () => {
     try {
@@ -12,41 +12,32 @@ const PlayAudio = ({trackName}) => {
           "Content-Type": "text/plain",
           "Accept": "*/*",
         },
-        body: trackName,
+        body: trackUrl,
       });
 
       if (!response.ok) {
         throw new Error("Network response was not ok");
-      }
-
-      // Get the blob data from the response
+      } 
       const blob = await response.blob();
-      console.log(blob);
-
-      // Create a URL for the blob
-      const url = window.URL.createObjectURL(blob);
-
-      // Set the audio source to the blob URL
-      setAudioSrc(url);
-      // console(url);
+      console.log(blob); 
+      const url = window.URL.createObjectURL(blob); 
+      setAudioSrc(url); 
     } catch (error) {
       console.error("Error fetching the audio:", error);
     }
   };
 
-  useEffect(() => {
-    // Call fetchAudio only once when trackName changes
-    if (trackName) {
+  useEffect(() => { 
+    if (trackUrl) {
       fetchAudio();
+      setIsLoaded(false);
     }
-  }, [trackName]);
-
-  // fetchAudio();
+  }, [trackUrl]); 
 
   return (
-    <div>
-      {/* <button onClick={fetchAudio}>Play Audio</button> */}
-      <audio controls src={audioSrc} />
+    <div>  
+      {isLoaded ? (<div> {trackName}</div>):(<div>Loading</div>)}
+      <audio controls src={audioSrc} onLoadedData={() => setIsLoaded(true)} />
     </div>
   );
 };
