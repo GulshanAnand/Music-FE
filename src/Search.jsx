@@ -6,6 +6,7 @@ import PlayAudio from './PlayAudio';
 const Search = () => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
+  const [track, setTrack] = useState('');
   const handleSearch = async () => {
     try {
       const request = `http://192.168.0.103:8080/music/search/${query}`;
@@ -42,6 +43,7 @@ const Search = () => {
         <ul>
           {results.map((item, index) => (
             <li key={index}>{item.title}<br/>{item.videoUrl}<br/>
+            <button onClick={()=>setTrack(item.videoUrl)}>PLAY</button>
             </li>
              // Assume each result has a "name" property
           ))}
@@ -49,7 +51,7 @@ const Search = () => {
       ) : (
         <p>No results found for "{query}"</p>
       )}
-      {/* {track!==''?(<PlayAudio trackName={track}/>):(<div>Nothing to play</div>)} */}
+      {track!==''?(<PlayAudio trackName={track}/>):(<div>Nothing to play</div>)}
 
     </div>
   );

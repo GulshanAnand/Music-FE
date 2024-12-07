@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const PlayAudio = () => {
-  const trackName = "https://www.youtube.com/watch?v=3CvdX1VVNbY";
+const PlayAudio = ({trackName}) => {
+  // const trackName = "https://www.youtube.com/watch?v=3CvdX1VVNbY";
   const [audioSrc, setAudioSrc] = useState("");
 
   const fetchAudio = async () => {
@@ -34,10 +34,19 @@ const PlayAudio = () => {
     }
   };
 
+  useEffect(() => {
+    // Call fetchAudio only once when trackName changes
+    if (trackName) {
+      fetchAudio();
+    }
+  }, [trackName]);
+
+  // fetchAudio();
+
   return (
     <div>
-      <button onClick={fetchAudio}>Play Audio</button>
-      {true && <audio controls src={audioSrc} />}
+      {/* <button onClick={fetchAudio}>Play Audio</button> */}
+      <audio controls src={audioSrc} />
     </div>
   );
 };
