@@ -1,23 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchBar from './SearchBar';
 import SubmitButton from './SubmitButton';
 import MusicItem from './MusicItem';
 import Player from './Player';
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
+import apiURL from './config/config';
 
 const Home = () => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [trackUrl, setTrackUrl] = useState('');
   const [trackName, setTrackName] = useState('');
+
+  const [cookies] = useCookies(["access_token"]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+      if(cookies.access_token){
+          navigate("/");
+      }
+      else{
+        navigate("/login");
+      }
+  });
+
   const handleSearch = async () => {
+
     try {
-      const request = `http://192.168.0.103:8080/music/search/${query}`;
+      const request = `${apiURL}/music/search/${query}`;
       console.log(request);
       const response = await fetch(request, {
         method: "GET",
         headers: {
           "Content-Type": "text/plain",
           "Accept": "*/*",
+          'Authorization': `Bearer ${cookies.access_token}`
         }
       });
 
