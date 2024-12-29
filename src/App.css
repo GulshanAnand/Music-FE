@@ -36,3 +36,43 @@
     transform: rotate(360deg);
   }
 }
+
+
+.navbar {
+  margin: 0;
+  /* padding-left: 20px;
+  padding-right: 20px; */
+  width: 100%;
+  height: 60px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+}
+
+.navhead {
+  margin-left: 40px;
+  cursor: pointer;
+}
+
+.navdiv {
+  margin-left: 40px;
+  cursor: pointer;
+}
+
+.navdiv a {
+  color: aliceblue;
+  text-decoration: none;
+}
+
+.navdivend {
+  position: absolute;
+  right: 50px;
+}
+
+.navdivend a {
+  color: aliceblue;
+  text-decoration: none;
+  font-size: large;
+}

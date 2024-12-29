@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from "react";
+import { useCookies } from "react-cookie";
 import './Player.css';
+import apiURL from './config/config';
 
 const PlayAudio = ({trackName, trackUrl}) => { 
   const [audioSrc, setAudioSrc] = useState("");
   const [isLoaded, setIsLoaded] = useState(false); 
+  const [cookies] = useCookies(["access_token"]);
 
   const fetchAudio = async () => {
     try {
-      const response = await fetch("http://192.168.0.103:8080/music/download", {
+      const response = await fetch(`${apiURL}/music/download`, {
         method: "POST",
         headers: {
           "Content-Type": "text/plain",
           "Accept": "*/*",
+          'Authorization': `Bearer ${cookies.access_token}`
         },
         body: trackUrl,
       });
