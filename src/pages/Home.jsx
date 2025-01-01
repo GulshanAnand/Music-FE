@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import SearchBar from './SearchBar';
-import SubmitButton from './SubmitButton';
-import MusicItem from './MusicItem';
-import Player from './Player';
+import SearchBar from '../components/SearchBar';
+import SubmitButton from '../components/SubmitButton';
+import MusicItem from '../components/MusicItem';
+import Player from '../components/Player';
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-import apiURL from './config/config';
+import apiURL from '../config/config';
 
 const Home = () => {
   const [query, setQuery] = useState('');
