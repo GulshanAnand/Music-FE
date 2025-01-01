@@ -4,11 +4,11 @@ import { useCookies } from "react-cookie";
 
 export const Navbar = () => {
 
-    const [cookies, removeCookie] = useCookies(["access_token"]);
+    const [cookies, setCookies] = useCookies(["access_token"]);
     const navigate = useNavigate();
     
-    const logout = () => {
-        removeCookie("access_token");
+    const logout = () => { 
+        setCookies("access_token", "", { path: "/" });
         navigate("/login");
     }
 

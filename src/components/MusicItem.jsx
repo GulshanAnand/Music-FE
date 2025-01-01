@@ -1,5 +1,6 @@
 import React from 'react';
 import './MusicItem.css';
+import  AddToPlaylist  from './AddToPlaylist';
 
 const MusicItem = ({ item, setTrackUrl, setTrackName }) => {
     const decodeHtmlEntities = (str) => {
@@ -19,6 +20,12 @@ const MusicItem = ({ item, setTrackUrl, setTrackName }) => {
                     onClick={() => { setTrackUrl(item.videoUrl); setTrackName(item.title); }}
                 >
                     PLAY
+                </button>
+                <button 
+                    className="play-button" 
+                    onClick={() => { AddToPlaylist(item) }}
+                >
+                    ADD TO PLAYLIST
                 </button>
             </div>
         </div>
