@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import './Player.css';
-import apiURL from './config/config';
+import apiURL from '../config/config';
 
 const PlayAudio = ({trackName, trackUrl}) => { 
   const [audioSrc, setAudioSrc] = useState("");

@@ -1,0 +1,44 @@
+.music-item-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #e3f2fd;
+}
+
+.title-box {
+    flex: 1;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    text-align: left;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.button-box {
+    flex: 0;
+    padding: 10px;
+    margin-left: 20px;
+    border-radius: 8px;
+    background-color: #e3f2fd;
+}
+
+.play-button {
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    background-color: #2196F3;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.play-button:hover {
+    background-color: #1976D2;
+}
