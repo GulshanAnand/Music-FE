@@ -21,7 +21,10 @@ export const Navbar = () => {
             <h2 className="navhead" onClick={redirectHome}>Music Playa</h2>
             <div className="navdivend">
                 {!cookies.access_token ? (<Link to="/login">Login</Link>):
-                (<button onClick={logout}>Logout</button>)}
+                (<>
+                    <button onClick={() => navigate("/playlist")}>My Playlist</button>
+                    <button onClick={logout}>Logout</button>
+                </>)}
             </div>
         </div>
     );
