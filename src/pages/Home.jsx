@@ -18,12 +18,12 @@ const Home = () => {
 
   useEffect(() => {
       if(cookies.access_token){
-          navigate("/");
+        navigate("/");
       }
       else{
         navigate("/login");
       }
-  });
+  }, [cookies.access_token, navigate]);
 
   const handleSearch = async () => {
 
