@@ -51,7 +51,8 @@ const Playlist = () => {
       
             if (response.status === HttpStatusCode.Ok) {
                 console.log("Removed from playlist");
-                results.filter((video) => video.key !== key);
+                setResults((results) => results.filter((video) => video.videoUrl !== videoUrl));
+                // console.log(results); // setResults is async function, so log may print old value
             }
             else {
                 console.error("Unable to remove from Playlist");
