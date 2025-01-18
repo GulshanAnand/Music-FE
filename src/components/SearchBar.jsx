@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 import apiURL from '../config/config';
+import './SearchBar.css';
 
-const SearchBar = ({ query, setQuery, setResults }) => {
+const SearchBar = () => {
 
   const [cookies] = useCookies(["access_token"]);
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState([]);
+
+  const navigate = useNavigate();
 
   const onSearch = async () => {
 
@@ -25,6 +31,7 @@ const SearchBar = ({ query, setQuery, setResults }) => {
       }
       const data = await response.json();
       setResults(data);
+      navigate('/search', { state: { results: results, query: query } });
     } catch (err) {
       console.log(err);
     }
@@ -32,17 +39,18 @@ const SearchBar = ({ query, setQuery, setResults }) => {
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
-      onSearch(); // Trigger search on Enter key press
+      onSearch();
     }
   };
 
   return (
     <div>
       <input
+        className="search-bar"
         type="text"
         value={query}
-        onChange={(e) => setQuery(e.target.value)} // Update query on input change
-        onKeyDown={handleKeyDown} // Listen for the Enter key
+        onChange={(e) => setQuery(e.target.value)}
+        onKeyDown={handleKeyDown}
         placeholder="Search..."
       />
     </div>
@@ -50,9 +58,3 @@ const SearchBar = ({ query, setQuery, setResults }) => {
 };
 
 export default SearchBar;
-// style={{
-//   padding: '10px',
-//   fontSize: '16px',
-//   marginRight: '10px',
-//   width: '70%',
-// }}

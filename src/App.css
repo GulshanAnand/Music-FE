@@ -37,44 +37,58 @@
   }
 }
 
+/* Navbar styling */
 .navbar {
-  margin: 0;
-  width: 100%;
-  height: 90px;
-  background-color: black;
   display: flex;
-  align-items: center;
-  color: white;
-  text-decoration: none;
+  align-items: center; /* Vertically center all items */
+  justify-content: space-around; /* Push items to the edges */
+  padding: 10px 20px;
+  background-color: #121212; /* Spotify-like dark background */
+  color: #fff;
+  height: 70px;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
   position: fixed; /* Makes the navbar stick to the top */
   top: 0; /* Positions it at the very top */
 }
 
+/* Navigation header (logo/text) */
 .navhead {
-  margin-left: 40px;
+  font-size: 20px;
+  font-weight: bold;
   cursor: pointer;
+  color: #1db954; /* Spotify green */
+  margin: 0;
 }
 
-.navdiv {
-  margin-left: 40px;
+/* Navigation end (buttons and links) */
+.navdivend {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Spacing between items */
+}
+
+.navdivend button {
+  background-color: #282828; /* Dark gray background */
+  border: none;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.navdiv a {
-  color: aliceblue;
-  text-decoration: none;
+.navdivend button:hover {
+  background-color: #1db954; /* Spotify green on hover */
 }
 
-.navdivend {
-  position: absolute;
-  right: 50px;
+/* SearchBar container in the navbar */
+.navbar .search-bar {
+  flex: 1; /* Allow the search bar to expand and take up available space */
+  max-width: 500px; /* Limit the width of the search bar */
+  margin: 0 20px; /* Add horizontal spacing */
 }
 
-.navdivend {
-  display: flex;         /* Use flexbox for horizontal layout */
-  align-items: center;   /* Vertically align buttons */
-  gap: 10px;             /* Space between buttons */
-}
 
 .btn-logout {
   padding: 10px 20px; /* Space inside the button */
@@ -109,9 +123,9 @@
 }
 
 .icon {
-  margin-right: 8px;  /* Adds space between the icon and text */
-  width: 20px;        /* Controls the icon size */
-  height: 20px;       /* Controls the icon size */
+  margin-right: 8px;
+  width: 22px;
+  height: 22px;
 }
 
 .btn-playlist:hover {
