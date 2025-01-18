@@ -6,7 +6,7 @@ import apiURL from '../config/config';
 import { HttpStatusCode } from 'axios';
 import { useLocation } from 'react-router-dom';
 
-const MusicItem = ({ key, item, setTrackUrl, setTrackName, RemoveFromPlaylist }) => {
+const MusicItem = ({ item, setTrackUrl, setTrackName, RemoveFromPlaylist }) => {
     const decodeHtmlEntities = (str) => {
         const parser = new DOMParser();
         const decodedString = parser.parseFromString(str, "text/html").body.textContent;
@@ -61,7 +61,7 @@ const MusicItem = ({ key, item, setTrackUrl, setTrackName, RemoveFromPlaylist })
                 </button>
                 <button 
                     className="play-button" 
-                    onClick={() => {console.log(item);(isPlaylistPath?RemoveFromPlaylist(key, item.videoUrl):AddToPlaylist(item.title, item.videoUrl))}}
+                    onClick={() => {console.log(item);(isPlaylistPath?RemoveFromPlaylist(item.videoUrl):AddToPlaylist(item.title, item.videoUrl))}}
                 >
                 <>{!isPlaylistPath?<>ADD TO PLAYLIST</>:<>Remove from PLAYLIST</>}</>           
                 </button>
