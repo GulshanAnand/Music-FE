@@ -37,42 +37,97 @@
   }
 }
 
-
+/* Navbar styling */
 .navbar {
-  margin: 0;
-  /* padding-left: 20px;
-  padding-right: 20px; */
+  display: flex;
+  align-items: center; /* Vertically center all items */
+  justify-content: space-around; /* Push items to the edges */
+  padding: 10px 20px;
+  background-color: #121212; /* Spotify-like dark background */
+  color: #fff;
+  height: 70px;
   width: 100%;
-  height: 60px;
-  background-color: black;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+  position: fixed; /* Makes the navbar stick to the top */
+  top: 0; /* Positions it at the very top */
+}
+
+/* Navigation header (logo/text) */
+.navhead {
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #1db954; /* Spotify green */
+  margin: 0;
+}
+
+/* Navigation end (buttons and links) */
+.navdivend {
   display: flex;
   align-items: center;
+  gap: 15px; /* Spacing between items */
+}
+
+.navdivend button {
+  background-color: #282828; /* Dark gray background */
+  border: none;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.navdivend button:hover {
+  background-color: #1db954; /* Spotify green on hover */
+}
+
+/* SearchBar container in the navbar */
+.navbar .search-bar {
+  flex: 1; /* Allow the search bar to expand and take up available space */
+  max-width: 500px; /* Limit the width of the search bar */
+  margin: 0 20px; /* Add horizontal spacing */
+}
+
+
+.btn-logout {
+  padding: 10px 20px; /* Space inside the button */
+  font-size: 16px;    /* Font size */
+  background-color: #4CAF50; /* Green background color */
+  color: white;       /* White text color */
+  font-weight: bold;  /* Bold text */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Nice font family */
+  border: none;       /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer;    /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.btn-logout:hover {
+  background-color: #388E3C; /* Darker green on hover */
+}
+
+.btn-playlist {
+  display: flex;
+  align-items: center;  /* Vertically aligns the icon and text */
+  justify-content: center; /* Horizontally centers the content */
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
   color: white;
-  text-decoration: none;
-}
-
-.navhead {
-  margin-left: 40px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.navdiv {
-  margin-left: 40px;
-  cursor: pointer;
+.icon {
+  margin-right: 8px;
+  width: 22px;
+  height: 22px;
 }
 
-.navdiv a {
-  color: aliceblue;
-  text-decoration: none;
-}
-
-.navdivend {
-  position: absolute;
-  right: 50px;
-}
-
-.navdivend a {
-  color: aliceblue;
-  text-decoration: none;
-  font-size: large;
+.btn-playlist:hover {
+  background-color: #388E3C;
 }

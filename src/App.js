@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Login from './pages/login';
 import Register from './pages/register';
 import Playlist from './pages/Playlist';
+import SearchResult from './pages/SearchResult';
 import { Navbar } from './components/navbar';
 
 
@@ -18,6 +19,7 @@ function App() {
             <Route path="/login" element={<Login />}/>
             <Route path="/register" element={<Register />}/>
             <Route path="/playlist" element={<Playlist />}/>
+            <Route path="/search" element={<SearchResult />} />
           </Routes>
         </Router>
       </header>
