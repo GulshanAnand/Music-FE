@@ -15,11 +15,14 @@ const Player = ({ trackName, trackUrl }) => {
         const response = await fetch(`${apiURL}/music/download`, {
           method: "POST",
           headers: {
-            "Content-Type": "text/plain",
+            "Content-Type": "application/json",
             "Accept": "*/*",
             'Authorization': `Bearer ${cookies.access_token}`
           },
-          body: trackUrl,
+          body: JSON.stringify({
+            "title": trackName,
+            "videoUrl": trackUrl
+          })
         });
 
         if (!response.ok) {
@@ -37,7 +40,7 @@ const Player = ({ trackName, trackUrl }) => {
       fetchAudio();
       setIsLoaded(false);
     }
-  }, [trackUrl, cookies.access_token]);
+  }, [trackName, trackUrl, cookies.access_token]);
 
   return (
     <div className="player-container">
