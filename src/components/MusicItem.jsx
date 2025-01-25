@@ -17,6 +17,11 @@ const MusicItem = ({ item, setTrackUrl, setTrackName, RemoveFromPlaylist }) => {
     const location = useLocation();
     const isPlaylistPath = location.pathname.endsWith('/playlist');
 
+    const getVideoId = (videoUrl) => {
+        const videoId = videoUrl.substr("https://www.youtube.com/watch?v=".length);
+        return `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+    };
+
     const AddToPlaylist = async (title, videoUrl) => {
         console.log("ye raha title: " + title);
         try {
@@ -49,6 +54,9 @@ const MusicItem = ({ item, setTrackUrl, setTrackName, RemoveFromPlaylist }) => {
 
     return (
         <div className="music-item-container">
+            <div className="thumbnail">
+                <img src={getVideoId(item.videoUrl)} alt=''/>
+            </div>
             <div className="title-box">
                 {item.title}
             </div>
